@@ -1,0 +1,49 @@
+name:                instant
+version:             0.1.0.0
+github:              "rottensunday/instant_compiler"
+license:             MIT
+author:              "Aleksander Wiśniewski"
+
+extra-source-files:
+- README.md
+
+dependencies:
+- base >= 4.7 && < 5
+- text
+- array
+- containers
+- process
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+
+library:
+  source-dirs: src
+
+executables:
+  insc_jvm:
+    main:                inscJVM.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - instant
+  insc_llvm:
+    main:                inscLLVM.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - instant

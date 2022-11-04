@@ -1,0 +1,78 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           instant
+version:        0.1.0.0
+homepage:       https://github.com/rottensunday/instant_compiler#readme
+bug-reports:    https://github.com/rottensunday/instant_compiler/issues
+author:         Aleksander Wiśniewski
+maintainer:     Aleksander Wiśniewski
+license:        MIT
+build-type:     Simple
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/rottensunday/instant_compiler
+
+library
+  exposed-modules:
+      JvmConsts
+      JvmGenerator
+      Language.Abs
+      Language.ErrM
+      Language.Lex
+      Language.Par
+      Language.Print
+      Language.Skel
+      LLVMConsts
+      LLVMGenerator
+      Shared
+  other-modules:
+      Paths_instant
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      array
+    , base >=4.7 && <5
+    , containers
+    , process
+    , text
+  default-language: Haskell2010
+
+executable insc_jvm
+  main-is: inscJVM.hs
+  other-modules:
+      Paths_instant
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      array
+    , base >=4.7 && <5
+    , containers
+    , instant
+    , process
+    , text
+  default-language: Haskell2010
+
+executable insc_llvm
+  main-is: inscLLVM.hs
+  other-modules:
+      Paths_instant
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      array
+    , base >=4.7 && <5
+    , containers
+    , instant
+    , process
+    , text
+  default-language: Haskell2010
